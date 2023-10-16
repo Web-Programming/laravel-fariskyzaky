@@ -40,17 +40,27 @@ Route::get('/profil/{nama?}/{pekerjaan?}',
         echo "<h1>Nama Saya $nama. Saya adalah $pekerjaan</h2>";
 });
 
-//Redirect
-Route::get('/hubungi', function() {
-        echo "<h1>Hubungi Kami<h1>";
-})->name("call");       //named route
 
-Route::get("/contact", "/hubungi");
 
-Route::get('/holaa', function() {
-        echo "<a href='". route('call') . "'>" . route('call'). "</a>";
+// Route::get('/hubungi',function() {
+//         echo "<h1>Hubungi Kami<h1>";
+// })->name("call");       //named route
+
+// Route::get("/contact","/hubungi");
+
+// Route::get('/holaa',function() {
+//         echo "<a href='".route('call')."'>". route('call')."</a>";
+// });
+
+Route::get("/hubungi",function(){
+    echo "<h1>hubungi kami</h1>";
+})->name("call"); //named route
+
+Route::redirect("/contact","/hubungi");
+
+Route::get("/halo",function(){
+    echo " <a href='".route('call')."'>". route('call')."</a> ";
 });
-
 
 Route::prefix('/mahasiswa')->group(function() {
     Route::get("/jadwal", function(){
@@ -61,3 +71,20 @@ Route::prefix('/mahasiswa')->group(function() {
     });
     //dan lain2
 });
+
+//slide 6 view
+Route::get('/fakultas', function() {
+    // return view('fakultas.index', ["ilkom" => "Fakultas Ilmu Komputer dan Rekayasa"]);
+
+    // return view('fakultas.index', ["fakultas" => ["Fakultas 
+    // Ilmu Komputer dan Rekayasa", "Fakultas Ilmu Ekonomi"]]);
+
+    // return view('fakultas.index')->with("fakultas", ["Fakultas 
+    // Ilmu Komputer dan Rekayasa", "Fakultas Ilmu Ekonomi"]);
+
+    $kampus = "Universitas Multi Data Palembang";
+    // $fakultas = [];
+    $fakultas = ["Fakultas Ilmu Komputer dan Rekayasa", "Fakultas Ilmu Ekonomi"];
+    return view('fakultas.index', compact('fakultas', 'kampus'));
+});
+
