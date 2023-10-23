@@ -16,11 +16,13 @@ class Mahasiswa extends Model
     //fillable adalah kolom apa saja yg bisa di insert
 
     //Misal hanya ingin mengisi NPM dan nama saja
-    protected $fillable = ['npm', 'nama'];
+    protected $fillable = ['npm', 'nama',
+    'tempat_lahir',
+    'tanggal_lahir'];
 
     //Untuk mengatur kolom yang tidak boleh diisi / dilindungi
     //Misal ada kolom npm yg tidak boleh diisi, maka kolom tersebut dijaga / tidak boleh
     protected $guarded = [];
 
-    
+
 }
