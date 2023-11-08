@@ -17,8 +17,6 @@ return new class extends Migration
             $table->string('nama');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
-            $table->date('tanggal_lahir');
-            $table->text('alamat');
             $table->timestamps();   //created_at dan updated_at
         });
     }

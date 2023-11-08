@@ -109,7 +109,9 @@ Route::get('/mahasiswa/delete-elq',[MahasiswaController::class, 'deleteElq']);
 Route::get('/mahasiswa/select-elq',[MahasiswaController::class, 'selectElq']);
 
 //Membuat join dengan DB Facade
-Route::get('/prodi/all-join-facade',[ProdiController::class,'allJoinFacade']);
+Route::get('/prodi/all-join-facade', [ProdiController::class, 'allJoinFacade']);
 
 //Membuat join dengan Eloquent
 Route::get('/prodi/all-join-elq', [ProdiController::class, 'allJoinElq']);
+
+Route::get('/mahasiswa/all-join-elq', [MahasiswaController::class, 'allJoinElq']);

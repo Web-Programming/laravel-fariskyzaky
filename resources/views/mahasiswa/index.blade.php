@@ -1,9 +1,8 @@
 @extends('layout.master')
-@section('title', 'Halaman Prodi')
+@section('title', 'Halaman Mahasiswa')
 
 @section('content')
-<h2>Program Studi</h2>
-Ini halaman Prodi
+<h2>Mahasiswa</h2>
 
     <table class="table table-striped">
         <thead>
@@ -12,9 +11,9 @@ Ini halaman Prodi
             </tr>
         </thead>
         <tbody>
-        @foreach ($allmahasiswaprodi as $item)
+        @foreach ($allmahasiswa as $item)
             <tr>
-                <td> {{ $item->npm }} </td><td> {{ $item->nama_mahasiswa }} </td><td> {{ $item->nama_prodi }}
+                <td> {{ $item->npm }} </td><td> {{ $item->nama_mahasiswa }} </td><td> {{ $item->prodi->nama }}
                 </td>
             </tr>
         @endforeach
