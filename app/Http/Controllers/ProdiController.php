@@ -27,5 +27,24 @@ class ProdiController extends Controller {
             echo "<hr>";
         }
     }
+
+    //Controller create()
+    public function create()
+    {
+        return view('prodi.create');
+    }
+
+    //Controller Store()
+    public function store(Request $request)
+    {
+        // dump($request);
+        // echo $request->nama;
+
+        $validateData = $request->validate([
+            'nama'=> 'required|min:5|max:20',
+        ]);
+        dump($validateData);
+        echo $validateData['nama'];
+    }
 }
 ?>
