@@ -45,6 +45,46 @@ class ProdiController extends Controller {
         ]);
         dump($validateData);
         echo $validateData['nama'];
+
+        $prodi = new Prodi();   // buat object prodi
+        $prodi->nama = $validateData['nama'];   // Simpai nilai input ($validateData['nama]) ke dalam
+        // propert nama prodi ($prodi->nama)
+        $prodi->save(); // Simpan ke dalam tabel prodis
+
+        // return "Data prodi $prodi->nama berhasil disimpan ke database"; //tampilkan pesan berhasil
+        $request->session()->flash('info', "Data prodi $prodi->nama berhasil disimpan ke database");
+        return redirect()->route('prodi.create');
+    }
+
+    public function index() {
+        $prodi = Prodi::all();
+        return view('prodi.index')->with('prodis', $prodi);
+    }
+
+    public function show(Prodi $prodi) {
+        return view('prodi.show', ['prodi' => $prodi]);
+    }
+
+    public function edit(Prodi $prodi) {
+        return view('prodi.edit', ['prodi'=> $prodi]);
+    }
+
+    public function update(Request $request, Prodi $prodi) {
+        // dump($request->all());
+        // dump($prodi);
+        $validate = $request->validate([
+            'nama'=> 'required|min:5|max:20',
+        ]);
+
+        Prodi::where('id', $prodi->id)->update($validateData);
+        $request->session()->flash('info', "Data prodi $prodi->nama berhasil diubah");
+        return redirect()->route('prodi.index');
+    }
+
+    public function destroy(Prodi $prodi) {
+        $prodi->delete();
+        return redirect()->route('prodi.index')
+            ->with("info","Prodi $prodi->nama berhasil dihapus.");
     }
 }
 ?>
