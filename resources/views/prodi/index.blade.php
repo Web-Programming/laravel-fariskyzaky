@@ -23,7 +23,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($prodi as $item)
+                @foreach ($prodis as $item)
                     <tr>
                         <td>
                             {{ $item->nama }}
@@ -33,16 +33,16 @@
                             <a href="{{ url('prodi/'.$item->id.'/edit') }}" class="btn btn-info">Ubah</a> --}}
                               <form action="{{ route('prodi.destroy',['prodi' => $item->id]) }}"
                                     method="POST">
-                                            <a href="{{ url('/prodi/'.$item->id) }}" class="btn btn-warning">Detail</a>
+                                            <a href="{{ url('prodi/'.$item->id) }}" class="btn btn-warning">Detail</a>
                                             {{-- <td> {{ $item->nama_mahasiswa }} </td><td> {{ $item->nama_prodi }} --}}
-                                            <a href="{{ url('/prodi/'.$item->id.'/edit') }}" class="btn btn-info">Ubah</a>
+                                            <a href="{{ url('prodi/'.$item->id.'/edit') }}" class="btn btn-info">Ubah</a>
                                     @method('DELETE')
                                     @csrf
                                     <button type="submit" class="btn btn-danger ">Hapus</button>
                                 </form>
                         </td>
                     </tr>
-                    
+
                     @endforeach
                     </tbody>
                 </table>

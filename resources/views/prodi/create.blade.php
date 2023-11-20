@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form Prodi</title>
-</head>
+@extends('layout.master')
+@section('title','Form prodi')
+
+@section('content')
 <body>
     <div class="container">
         <div class="row pt-4">
@@ -16,7 +12,7 @@
                     {{ session()->get('info') }}
                 </div>
                 @endif
-                <form action="{{url('prodi/store')}}" method="post">
+                <form action="{{url('prodi/store')}}" method="post" enctype="multipart/form-data" >
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>
@@ -26,10 +22,16 @@
                         <div class="text-danger"> {{ $message }} </div>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label for="nama">Foto/logo</label>
+                        <input type="file" name="foto" id="foto" class="form-control">
+                        @error('foto')
+                        <div class="text-danger"> {{ $message }} </div>
+                        @enderror
+                    </div>
                     <button type="submit" class="btn btn-primary mt-2">Simpan</button>
                 </form>
             </div>
         </div>
     </div>
-</body>
-</html>
+@endsection

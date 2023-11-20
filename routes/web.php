@@ -117,7 +117,10 @@ Route::get('/prodi/all-join-elq', [ProdiController::class, 'allJoinElq']);
 Route::get('/mahasiswa/all-join-elq', [MahasiswaController::class, 'allJoinElq']);
 
 //Route prodi/create
-Route::get('/prodi/create', [ProdiController::class,'create']);
+Route::get('/prodi/create', [ProdiController::class,'create'])->name('prodi.create');
+
+// Read Data
+Route::get('/prodi', [ProdiController::class, 'index'])->name('prodi.create');
 
 //Route prodi/store
 Route::post('prodi/store', [ProdiController::class,'store']);
